@@ -1,0 +1,105 @@
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
+import { useScrollPosition } from '../hooks/useScrollPosition';
+
+const navLinks = [
+  { label: 'Home', path: '/' },
+  { label: 'Services', path: '/services' },
+  { label: 'About', path: '/about' },
+  { label: 'Contact', path: '/contact' },
+];
+
+export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const scrollY = useScrollPosition();
+  const location = useLocation();
+  const isScrolled = scrollY > 40;
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
+  return (
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      style={{
+        background: isScrolled
+          ? 'rgba(13,17,23,0.97)'
+          : 'transparent',
+        backdropFilter: isScrolled ? 'blur(12px)' : 'none',
+        borderBottom: isScrolled ? '1px solid rgba(212,168,67,0.1)' : 'none',
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <Link to="/" className="flex flex-col leading-none group">
+          <span
+            className="font-heading font-black text-2xl text-gradient-gold tracking-wider"
+            style={{ letterSpacing: '0.05em' }}
+          >
+            APA
+          </span>
+          <span className="text-white-dim text-xs font-medium tracking-widest uppercase" style={{ fontSize: '0.6rem' }}>
+            Automation Prime Africa
+          </span>
+        </Link>
+
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link to="/contact" className="btn-gold text-sm py-2.5 px-6">
+            Get Started
+          </Link>
+        </div>
+
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden text-white-muted hover:text-gold transition-colors p-1"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile overlay menu */}
+      <div
+        className={`md:hidden fixed inset-0 z-40 transition-all duration-300 ${
+          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+        style={{ background: 'rgba(13,17,23,0.98)', top: '68px' }}
+      >
+        <div className="flex flex-col items-center justify-center h-full gap-8 pb-20">
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`text-2xl font-heading font-bold transition-colors ${
+                location.pathname === link.path ? 'text-gold' : 'text-white hover:text-gold'
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link to="/contact" className="btn-gold mt-4 text-base py-3 px-8">
+            Get Started
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
+}
