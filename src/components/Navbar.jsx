@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useScrollPosition } from '../hooks/useScrollPosition';
+import APALogo from './APALogo';
 
 const navLinks = [
   { label: 'Home', path: '/' },
@@ -38,13 +39,8 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center">
-          <img
-            src="/logo.png"
-            alt="Automation Prime Africa"
-            className="w-auto md:h-10 h-8 object-contain"
-            style={{ maxHeight: '40px' }}
-          />
+        <Link to="/" className="flex items-center" aria-label="Automation Prime Africa — home">
+          <APALogo size="small" />
         </Link>
 
         {/* Desktop nav */}

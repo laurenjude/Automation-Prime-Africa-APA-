@@ -1,12 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Phone, Sun, Building2, Scale } from 'lucide-react';
 import ValuePropBar from '../components/ValuePropBar';
-import ServiceCard from '../components/ServiceCard';
 import HowWeWork from '../components/HowWeWork';
 import StatsSection from '../components/StatsSection';
 import CTASection from '../components/CTASection';
 import ScrollFadeIn from '../components/ScrollFadeIn';
 import GoldWave from '../components/GoldWave';
+import APALogo from '../components/APALogo';
+import ServiceCarousel from '../components/ServiceCarousel';
 
 const services = [
   {
@@ -72,14 +73,9 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 max-w-3xl mx-auto px-6 flex flex-col items-center" style={{ paddingTop: '96px', paddingBottom: '220px' }}>
 
-          {/* Logo */}
+          {/* Coded APA logo */}
           <div className="hero-logo mb-10">
-            <img
-              src="/logo.png"
-              alt="Automation Prime Africa"
-              className="mx-auto w-auto"
-              style={{ height: 'clamp(110px, 18vw, 200px)' }}
-            />
+            <APALogo size="large" />
           </div>
 
           {/* Headline — three staggered lines */}
@@ -139,9 +135,9 @@ export default function Home() {
 
       {/* Services Overview */}
       <section className="py-20 md:py-28" style={{ background: '#0D1117' }}>
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-6 mb-10">
           <ScrollFadeIn>
-            <div className="text-center mb-14">
+            <div className="text-center">
               <h2 className="font-heading font-black text-3xl md:text-4xl text-white mb-3">
                 What We <span className="text-gradient-gold">Build</span>
               </h2>
@@ -151,14 +147,11 @@ export default function Home() {
               </p>
             </div>
           </ScrollFadeIn>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {services.map((svc, i) => (
-              <ScrollFadeIn key={svc.title} delay={i * 100}>
-                <ServiceCard {...svc} />
-              </ScrollFadeIn>
-            ))}
-          </div>
+        {/* Auto-scrolling carousel — full bleed so cards can overflow section padding */}
+        <div style={{ overflow: 'hidden' }}>
+          <ServiceCarousel services={services} />
         </div>
       </section>
 
