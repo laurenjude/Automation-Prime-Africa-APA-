@@ -38,16 +38,13 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex flex-col leading-none group">
-          <span
-            className="font-heading font-black text-2xl text-gradient-gold tracking-wider"
-            style={{ letterSpacing: '0.05em' }}
-          >
-            APA
-          </span>
-          <span className="text-white-dim text-xs font-medium tracking-widest uppercase" style={{ fontSize: '0.6rem' }}>
-            Automation Prime Africa
-          </span>
+        <Link to="/" className="flex items-center">
+          <img
+            src="/logo.png"
+            alt="Automation Prime Africa"
+            className="w-auto md:h-10 h-8 object-contain"
+            style={{ maxHeight: '40px' }}
+          />
         </Link>
 
         {/* Desktop nav */}

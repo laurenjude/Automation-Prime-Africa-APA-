@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Phone, Sun, Building2, Scale } from 'lucide-react';
 import ValuePropBar from '../components/ValuePropBar';
 import ServiceCard from '../components/ServiceCard';
@@ -6,6 +6,7 @@ import HowWeWork from '../components/HowWeWork';
 import StatsSection from '../components/StatsSection';
 import CTASection from '../components/CTASection';
 import ScrollFadeIn from '../components/ScrollFadeIn';
+import GoldWave from '../components/GoldWave';
 
 const services = [
   {
@@ -38,61 +39,99 @@ const services = [
   },
 ];
 
+// Inline keyframe styles injected once — Tailwind can't generate dynamic keyframe delays
+const heroStyles = `
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-line {
+    opacity: 0;
+    animation: heroFadeUp 0.7s ease forwards;
+  }
+  .hero-line-1 { animation-delay: 0.15s; }
+  .hero-line-2 { animation-delay: 0.35s; }
+  .hero-line-3 { animation-delay: 0.55s; }
+  .hero-logo   { opacity: 0; animation: heroFadeUp 0.6s ease 0s forwards; }
+  .hero-input  { opacity: 0; animation: heroFadeUp 0.6s ease 0.75s forwards; }
+  .hero-hint   { opacity: 0; animation: heroFadeUp 0.6s ease 0.95s forwards; }
+`;
+
 export default function Home() {
+  const navigate = useNavigate();
+
   return (
     <>
-      {/* Hero */}
-      <section
-        className="relative flex items-center justify-center text-center"
-        style={{
-          minHeight: '100vh',
-          background: 'linear-gradient(160deg, #0D1117 0%, #161B22 60%, #0D1117 100%)',
-        }}
-      >
-        {/* Radial gold glow */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: 'radial-gradient(ellipse 70% 60% at 50% 55%, rgba(212,168,67,0.08) 0%, rgba(212,168,67,0.02) 40%, transparent 70%)',
-          }}
-        />
+      <style>{heroStyles}</style>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 py-32">
-          {/* APA brand mark */}
-          <div className="mb-8">
-            <span
-              className="font-heading font-black text-gradient-gold"
-              style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', letterSpacing: '-0.02em', lineHeight: 1 }}
-            >
-              APA
-            </span>
+      {/* ── Hero ── */}
+      <section
+        className="relative flex items-center justify-center text-center overflow-hidden"
+        style={{ minHeight: '100vh', background: '#0D1117' }}
+      >
+        {/* Content */}
+        <div className="relative z-10 max-w-3xl mx-auto px-6 flex flex-col items-center" style={{ paddingTop: '96px', paddingBottom: '220px' }}>
+
+          {/* Logo */}
+          <div className="hero-logo mb-10">
+            <img
+              src="/logo.png"
+              alt="Automation Prime Africa"
+              className="mx-auto w-auto"
+              style={{ height: 'clamp(110px, 18vw, 200px)' }}
+            />
           </div>
 
-          <h1
-            className="font-heading font-black text-white mb-6 leading-tight"
-            style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
-          >
-            Automate Today.{' '}
-            <span className="text-gradient-gold">Lead Tomorrow.</span>
+          {/* Headline — three staggered lines */}
+          <h1 className="font-heading font-bold leading-tight mb-10" style={{ fontSize: 'clamp(1.85rem, 4.5vw, 2.75rem)' }}>
+            <span className="block text-white hero-line hero-line-1">Smart Systems.</span>
+            <span className="block text-white hero-line hero-line-2">Real Results.</span>
+            <span className="block hero-line hero-line-3" style={{ color: '#D4A843' }}>Built for Africa.</span>
           </h1>
 
-          <p className="text-white-muted text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-            Intelligent automation systems that save time, reduce errors, and grow your business.
-          </p>
+          {/* Decorative input bar */}
+          <div className="hero-input w-full max-w-xl">
+            <div
+              className="flex items-center gap-2 px-3 py-2.5 rounded-full"
+              style={{
+                background: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(212,168,67,0.3)',
+                backdropFilter: 'blur(10px)',
+              }}
+            >
+              <input
+                type="text"
+                placeholder="Type your automation idea"
+                readOnly
+                className="flex-1 bg-transparent outline-none text-sm px-3"
+                style={{ color: '#A0A0A0', caretColor: '#D4A843' }}
+                onFocus={(e) => { e.target.blur(); navigate('/contact'); }}
+              />
+              <button
+                onClick={() => navigate('/contact')}
+                className="flex-shrink-0 font-heading font-bold text-dark-primary text-sm rounded-full px-5 py-2.5"
+                style={{ background: 'linear-gradient(135deg, #D4A843, #E8C36A)', whiteSpace: 'nowrap' }}
+              >
+                Create
+              </button>
+            </div>
+          </div>
 
-          <Link to="/contact" className="btn-gold text-base md:text-lg px-8 md:px-12 py-4">
-            Let's Automate Your Business
-          </Link>
-
-          <p className="text-white-dim text-sm mt-7 tracking-wide">
-            Smart Systems. Real Results. Built for Africa.
+          {/* Hint text */}
+          <p className="hero-hint text-sm mt-5" style={{ color: '#A0A0A0' }}>
+            Not sure where to start?{' '}
+            <Link
+              to="/contact"
+              className="font-semibold transition-opacity hover:opacity-80"
+              style={{ color: '#D4A843' }}
+            >
+              Let's build together.
+            </Link>
           </p>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
-          <div className="w-px h-10" style={{ background: 'linear-gradient(to bottom, #D4A843, transparent)' }} />
-        </div>
+        {/* Gold wave — anchored to bottom of hero */}
+        <GoldWave />
       </section>
 
       {/* Value Props Bar */}
