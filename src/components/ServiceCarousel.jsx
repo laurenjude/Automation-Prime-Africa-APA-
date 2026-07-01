@@ -47,21 +47,13 @@ const carouselCSS = `
 @media (max-width: 767px) {
   .sc-wrap {
     overflow-x: auto;
-    overflow-y: visible;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding: 0 16px;
-    box-sizing: border-box;
+    overflow-y: hidden;
+    /* hide scrollbar — touch swipe still works */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
-  .sc-track {
-    animation: none !important;
-    padding: 16px 0 24px;
-  }
-  .sc-card {
-    width: 280px;
-    scroll-snap-align: start;
-  }
-  .sc-dup { display: none; }
+  .sc-wrap::-webkit-scrollbar { display: none; }
+  .sc-card { width: 280px; }
 }
 `;
 

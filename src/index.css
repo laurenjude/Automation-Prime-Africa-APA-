@@ -130,3 +130,10 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(212, 168, 67, 0.5);
 }
+
+/* Select dropdown options — overrides browser default white background */
+select option {
+  background-color: #161B22;
+  color: #FFFFFF;
+  padding: 8px;
+}

@@ -148,7 +148,12 @@ export default function ContactForm() {
           value={form.industry}
           onChange={handleChange}
           className={inputClass}
-          style={{ ...inputStyle, colorScheme: 'dark' }}
+          style={{
+            background: '#161B22',
+            border: '1px solid rgba(212,168,67,0.3)',
+            color: '#FFFFFF',
+            colorScheme: 'dark',
+          }}
         >
           <option value="">Select your industry</option>
           {industries.map((ind) => (

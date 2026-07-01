@@ -164,7 +164,7 @@ export default function APALogo({ size = 'large' }) {
         userSelect: 'none',
         whiteSpace: 'nowrap',
       }}>
-        AUTOMATE&nbsp;•&nbsp;INNOVATE&nbsp;•&nbsp;ELEVATE
+        Your Operations, Automated
       </p>
     </div>
   );

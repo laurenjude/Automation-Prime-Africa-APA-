@@ -49,7 +49,7 @@ export default function Footer() {
               <span className="text-white-dim text-xs tracking-widest uppercase mt-1">Automation Prime Africa</span>
             </Link>
             <p className="text-white-muted text-sm mt-3 leading-relaxed">
-              Automate. Innovate. Elevate.
+              Your Operations, Automated
             </p>
             <p className="text-white-dim text-xs mt-4 leading-relaxed">
               Based in Lagos, Nigeria. Serving businesses across Africa and internationally.
