@@ -44,14 +44,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
           <div>
-            <Link to="/" className="flex flex-col leading-none mb-4">
-              <span className="font-heading font-black text-3xl text-gradient-gold tracking-wider">APA</span>
-              <span className="text-white-dim text-xs tracking-widest uppercase mt-1">Automation Prime Africa</span>
+            <Link to="/" className="inline-block mb-4">
+              <img
+                src="/logo.png"
+                alt="Automation Prime Africa"
+                style={{ height: '80px', width: 'auto', display: 'block' }}
+              />
             </Link>
-            <p className="text-white-muted text-sm mt-3 leading-relaxed">
+            <p className="text-white-muted text-sm mt-1 leading-relaxed">
               Your Operations, Automated
             </p>
-            <p className="text-white-dim text-xs mt-4 leading-relaxed">
+            <p className="text-white-dim text-xs mt-3 leading-relaxed">
               Based in Lagos, Nigeria. Serving businesses across Africa and internationally.
             </p>
           </div>

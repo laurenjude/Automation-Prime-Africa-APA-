@@ -6,7 +6,6 @@ import StatsSection from '../components/StatsSection';
 import CTASection from '../components/CTASection';
 import ScrollFadeIn from '../components/ScrollFadeIn';
 import GoldWave from '../components/GoldWave';
-import APALogo from '../components/APALogo';
 import ServiceCarousel from '../components/ServiceCarousel';
 
 const services = [
@@ -73,9 +72,18 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 max-w-3xl mx-auto px-6 flex flex-col items-center" style={{ paddingTop: '96px', paddingBottom: '220px' }}>
 
-          {/* Coded APA logo */}
+          {/* APA logo */}
           <div className="hero-logo mb-10">
-            <APALogo size="large" />
+            <img
+              src="/logo.png"
+              alt="Automation Prime Africa"
+              style={{
+                width: 'clamp(200px, 40vw, 320px)',
+                height: 'auto',
+                display: 'block',
+                margin: '0 auto',
+              }}
+            />
           </div>
 
           {/* Headline — three staggered lines */}
