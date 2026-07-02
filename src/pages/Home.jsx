@@ -43,14 +43,14 @@ const heroStyles = `
     from { opacity: 0; transform: translateY(18px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  .hero-line        { opacity: 0; animation: heroFadeUp 0.7s ease forwards; }
-  .hero-line-1      { animation-delay: 0.2s; }
-  .hero-line-2      { animation-delay: 0.38s; }
-  .hero-line-3      { animation-delay: 0.56s; }
-  .hero-input       { opacity: 0; animation: heroFadeUp 0.6s ease 0.74s forwards; }
-  .hero-hint        { opacity: 0; animation: heroFadeUp 0.6s ease 0.92s forwards; }
+  .hero-line   { opacity: 0; animation: heroFadeUp 0.7s ease forwards; }
+  .hero-line-1 { animation-delay: 0.20s; }
+  .hero-line-2 { animation-delay: 0.38s; }
+  .hero-line-3 { animation-delay: 0.56s; }
+  .hero-input  { opacity: 0; animation: heroFadeUp 0.6s ease 0.74s forwards; }
+  .hero-hint   { opacity: 0; animation: heroFadeUp 0.6s ease 0.92s forwards; }
 
-  /* ── Mobile only: shift image anchor to top, darker overlay ── */
+  /* Mobile: anchor background to top on very small screens */
   @media (max-width: 767px) {
     .hero-section { background-position: center top !important; }
     .hero-overlay {
@@ -63,44 +63,10 @@ const heroStyles = `
       ) !important;
     }
   }
-  /* ── Very small screens ── */
+  /* Very small screens — mobile hero only (desktop hero is hidden below 768px) */
   @media (max-width: 374px) {
     .hero-h1         { font-size: 26px !important; }
     .hero-input-wrap { width: 95% !important; }
-  }
-
-  /* ── Desktop only (768px+) ── */
-  @media (min-width: 768px) {
-    /* Shift map right so left column has uncluttered space for text */
-    .hero-section {
-      background-position: 65% center !important;
-      height: 100vh !important;
-      overflow: hidden !important;
-    }
-    /* Left-to-right fade: heavy dark on left for legibility, transparent on right for map */
-    .hero-overlay {
-      background: linear-gradient(
-        to right,
-        rgba(13,17,23,0.92) 0%,
-        rgba(13,17,23,0.75) 35%,
-        rgba(13,17,23,0.30) 60%,
-        rgba(13,17,23,0.15) 100%
-      ) !important;
-    }
-    /* Content block: anchor to lower-left, not centered */
-    .hero-content {
-      text-align: left !important;
-      align-items: flex-start !important;
-      max-width: 60vw !important;
-      margin-left: 0 !important;
-      margin-right: auto !important;
-      padding-left: 8vw !important;
-      padding-right: 2rem !important;
-    }
-    /* Larger headline on wide screens */
-    .hero-h1 { font-size: 56px !important; line-height: 1.1 !important; }
-    /* Input bar left-anchored, capped at 500px */
-    .hero-input-wrap { max-width: 500px !important; }
   }
 `;
 
@@ -111,9 +77,12 @@ export default function Home() {
     <>
       <style>{heroStyles}</style>
 
-      {/* ── Hero ── */}
+      {/* ════════════════════════════════════════════════════
+          MOBILE HERO — visible below 768px, hidden on desktop
+          Full-screen background image with overlay + bottom text
+          ════════════════════════════════════════════════════ */}
       <section
-        className="hero-section relative flex flex-col justify-end text-center"
+        className="hero-section md:hidden relative flex flex-col justify-end text-center"
         style={{
           minHeight: '100vh',
           backgroundImage: 'url(/hero-bg.png)',
@@ -122,7 +91,7 @@ export default function Home() {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        {/* Dark gradient overlay — keeps top dark for navbar, centre open for the map, bottom dark for text */}
+        {/* Gradient overlay */}
         <div
           className="hero-overlay absolute inset-0 pointer-events-none"
           style={{
@@ -130,22 +99,20 @@ export default function Home() {
           }}
         />
 
-        {/* Content block — sits in the bottom third; desktop overrides via .hero-content */}
+        {/* Bottom content */}
         <div
-          className="hero-content relative z-10 w-full max-w-3xl mx-auto px-6 flex flex-col items-center"
+          className="relative z-10 w-full max-w-3xl mx-auto px-6 flex flex-col items-center"
           style={{ paddingBottom: '60px' }}
         >
-          {/* Headline */}
           <h1
             className="hero-h1 font-heading font-bold leading-tight mb-8"
-            style={{ fontSize: 'clamp(1.875rem, 4.5vw, 2.75rem)' }}
+            style={{ fontSize: 'clamp(1.875rem, 7vw, 2.75rem)' }}
           >
             <span className="block text-white hero-line hero-line-1">Smart Systems.</span>
             <span className="block text-white hero-line hero-line-2">Real Results.</span>
             <span className="block hero-line hero-line-3" style={{ color: '#D4A843' }}>Built for Africa.</span>
           </h1>
 
-          {/* Decorative input bar */}
           <div className="hero-input hero-input-wrap w-full max-w-xl">
             <div
               className="flex items-center gap-2 px-3 py-2.5 rounded-full"
@@ -167,11 +134,87 @@ export default function Home() {
               <button
                 onClick={() => navigate('/contact')}
                 className="flex-shrink-0 font-heading font-bold text-sm rounded-full px-5 py-2.5"
-                style={{
-                  background: 'linear-gradient(135deg, #D4A843, #E8C36A)',
-                  color: '#0D1117',
-                  whiteSpace: 'nowrap',
-                }}
+                style={{ background: 'linear-gradient(135deg, #D4A843, #E8C36A)', color: '#0D1117', whiteSpace: 'nowrap' }}
+              >
+                Create
+              </button>
+            </div>
+          </div>
+
+          <p className="hero-hint text-sm mt-5" style={{ color: '#A0A0A0' }}>
+            Not sure where to start?{' '}
+            <Link to="/contact" className="font-semibold transition-opacity hover:opacity-80" style={{ color: '#D4A843' }}>
+              Let's build together.
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════
+          DESKTOP HERO — hidden below 768px, flex on desktop
+          Two-column: text left, image right
+          ════════════════════════════════════════════════════ */}
+      <section
+        className="hidden md:flex"
+        style={{ height: '100vh', overflow: 'hidden', backgroundColor: '#0D1117' }}
+      >
+        {/* ── Left column: text content ── */}
+        <div
+          className="relative flex flex-col justify-center flex-shrink-0"
+          style={{
+            width: '52%',
+            paddingTop: '80px',
+            paddingLeft: '8vw',
+            paddingRight: '3rem',
+            paddingBottom: '3rem',
+            backgroundColor: '#0D1117',
+            boxSizing: 'border-box',
+          }}
+        >
+          {/* Subtle ambient gold glow behind text */}
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'radial-gradient(circle at 30% 50%, rgba(212,168,67,0.06) 0%, transparent 60%)',
+              pointerEvents: 'none',
+            }}
+          />
+
+          {/* Headline */}
+          <h1
+            className="font-heading font-bold leading-tight relative z-10"
+            style={{ fontSize: '52px', lineHeight: 1.08, marginBottom: '2rem' }}
+          >
+            <span className="block text-white hero-line hero-line-1">Smart Systems.</span>
+            <span className="block text-white hero-line hero-line-2">Real Results.</span>
+            <span className="block hero-line hero-line-3" style={{ color: '#D4A843' }}>Built for Africa.</span>
+          </h1>
+
+          {/* Input bar */}
+          <div className="hero-input relative z-10" style={{ width: '100%', maxWidth: '500px', marginBottom: '1.25rem' }}>
+            <div
+              className="flex items-center gap-2 px-3 py-2.5 rounded-full"
+              style={{
+                background: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(212,168,67,0.3)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+              }}
+            >
+              <input
+                type="text"
+                placeholder="Type your automation idea"
+                readOnly
+                className="flex-1 bg-transparent outline-none text-sm px-3"
+                style={{ color: '#A0A0A0' }}
+                onFocus={(e) => { e.target.blur(); navigate('/contact'); }}
+              />
+              <button
+                onClick={() => navigate('/contact')}
+                className="flex-shrink-0 font-heading font-bold text-sm rounded-full px-5 py-2.5"
+                style={{ background: 'linear-gradient(135deg, #D4A843, #E8C36A)', color: '#0D1117', whiteSpace: 'nowrap' }}
               >
                 Create
               </button>
@@ -179,16 +222,53 @@ export default function Home() {
           </div>
 
           {/* Hint */}
-          <p className="hero-hint text-sm mt-5" style={{ color: '#A0A0A0' }}>
+          <p className="hero-hint text-sm relative z-10" style={{ color: '#A0A0A0' }}>
             Not sure where to start?{' '}
-            <Link
-              to="/contact"
-              className="font-semibold transition-opacity hover:opacity-80"
-              style={{ color: '#D4A843' }}
-            >
+            <Link to="/contact" className="font-semibold transition-opacity hover:opacity-80" style={{ color: '#D4A843' }}>
               Let's build together.
             </Link>
           </p>
+        </div>
+
+        {/* ── Right column: hero image ── */}
+        <div className="relative flex-1" style={{ overflow: 'hidden' }}>
+          <img
+            src="/hero-bg.png"
+            alt="Africa automation visualization"
+            loading="eager"
+            fetchPriority="high"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center top',
+              display: 'block',
+            }}
+          />
+          {/* Left edge: seamless blend into text column */}
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              top: 0, left: 0,
+              width: '80px', height: '100%',
+              background: 'linear-gradient(to right, #0D1117, transparent)',
+              zIndex: 2,
+              pointerEvents: 'none',
+            }}
+          />
+          {/* Bottom edge: fade to site background */}
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              bottom: 0, left: 0,
+              width: '100%', height: '100px',
+              background: 'linear-gradient(to top, #0D1117, transparent)',
+              zIndex: 2,
+              pointerEvents: 'none',
+            }}
+          />
         </div>
       </section>
 
