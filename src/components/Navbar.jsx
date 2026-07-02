@@ -37,17 +37,17 @@ export default function Navbar() {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
+        {/* Logo — 44px mobile, 56px desktop */}
         <Link to="/" className="flex items-center" aria-label="Automation Prime Africa — home">
           <img
             src="/logo.png"
             alt="Automation Prime Africa"
-            style={{ height: '44px', width: 'auto', display: 'block' }}
+            className="h-11 md:h-14 w-auto block"
           />
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <Link
               key={link.path}

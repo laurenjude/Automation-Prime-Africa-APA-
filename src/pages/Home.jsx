@@ -50,7 +50,7 @@ const heroStyles = `
   .hero-input       { opacity: 0; animation: heroFadeUp 0.6s ease 0.74s forwards; }
   .hero-hint        { opacity: 0; animation: heroFadeUp 0.6s ease 0.92s forwards; }
 
-  /* ── Mobile: shift image anchor to top so Africa map stays visible ── */
+  /* ── Mobile only: shift image anchor to top, darker overlay ── */
   @media (max-width: 767px) {
     .hero-section { background-position: center top !important; }
     .hero-overlay {
@@ -65,8 +65,42 @@ const heroStyles = `
   }
   /* ── Very small screens ── */
   @media (max-width: 374px) {
-    .hero-h1        { font-size: 26px !important; }
+    .hero-h1         { font-size: 26px !important; }
     .hero-input-wrap { width: 95% !important; }
+  }
+
+  /* ── Desktop only (768px+) ── */
+  @media (min-width: 768px) {
+    /* Shift map right so left column has uncluttered space for text */
+    .hero-section {
+      background-position: 65% center !important;
+      height: 100vh !important;
+      overflow: hidden !important;
+    }
+    /* Left-to-right fade: heavy dark on left for legibility, transparent on right for map */
+    .hero-overlay {
+      background: linear-gradient(
+        to right,
+        rgba(13,17,23,0.92) 0%,
+        rgba(13,17,23,0.75) 35%,
+        rgba(13,17,23,0.30) 60%,
+        rgba(13,17,23,0.15) 100%
+      ) !important;
+    }
+    /* Content block: anchor to lower-left, not centered */
+    .hero-content {
+      text-align: left !important;
+      align-items: flex-start !important;
+      max-width: 60vw !important;
+      margin-left: 0 !important;
+      margin-right: auto !important;
+      padding-left: 8vw !important;
+      padding-right: 2rem !important;
+    }
+    /* Larger headline on wide screens */
+    .hero-h1 { font-size: 56px !important; line-height: 1.1 !important; }
+    /* Input bar left-anchored, capped at 500px */
+    .hero-input-wrap { max-width: 500px !important; }
   }
 `;
 
@@ -96,9 +130,9 @@ export default function Home() {
           }}
         />
 
-        {/* Content block — sits in the bottom third */}
+        {/* Content block — sits in the bottom third; desktop overrides via .hero-content */}
         <div
-          className="relative z-10 w-full max-w-3xl mx-auto px-6 flex flex-col items-center"
+          className="hero-content relative z-10 w-full max-w-3xl mx-auto px-6 flex flex-col items-center"
           style={{ paddingBottom: '60px' }}
         >
           {/* Headline */}
