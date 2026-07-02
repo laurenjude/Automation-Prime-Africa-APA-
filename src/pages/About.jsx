@@ -39,6 +39,7 @@ const teamCarouselCSS = `
 .tc-wrap  { overflow: hidden; position: relative; }
 .tc-track {
   display: flex;
+  width: max-content;
   animation: teamScroll 20s linear infinite;
   will-change: transform;
   padding: 8px 0 20px;
