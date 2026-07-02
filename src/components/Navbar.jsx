@@ -33,7 +33,7 @@ export default function Navbar() {
           ? 'rgba(13,17,23,0.97)'
           : 'transparent',
         backdropFilter: isScrolled ? 'blur(12px)' : 'none',
-        borderBottom: isScrolled ? '1px solid rgba(212,168,67,0.1)' : 'none',
+        borderBottom: isScrolled ? '1px solid rgba(212,168,67,0.1)' : '1px solid transparent',
       }}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Facebook, Instagram, Linkedin, Mail } from 'lucide-react';
 
 const WhatsAppIcon = () => (
@@ -38,6 +38,14 @@ const navLinks = [
 ];
 
 export default function Footer() {
+  const location = useLocation();
+
+  const handleNavClick = (path) => {
+    if (location.pathname === path) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer style={{ background: '#161B22', borderTop: '1px solid rgba(212,168,67,0.08)' }}>
       <div className="max-w-7xl mx-auto px-6 py-16">
@@ -67,6 +75,7 @@ export default function Footer() {
                 <Link
                   key={link.path}
                   to={link.path}
+                  onClick={() => handleNavClick(link.path)}
                   className="text-white-muted hover:text-gold transition-colors text-sm"
                 >
                   {link.label}
