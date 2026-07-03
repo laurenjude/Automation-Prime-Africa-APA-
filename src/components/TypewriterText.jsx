@@ -10,32 +10,46 @@ export default function TypewriterText({ text }) {
     const startDelay = setTimeout(() => {
       setShowCursor(true);
 
-      let currentIndex = 0;
-      const typeInterval = setInterval(() => {
-        if (currentIndex < text.length) {
-          setDisplayedText(text.substring(0, currentIndex + 1));
-          currentIndex++;
-        } else {
-          // Typing complete
-          clearInterval(typeInterval);
-          setTypingComplete(true);
+      const startTyping = () => {
+        let currentIndex = 0;
+        const typeInterval = setInterval(() => {
+          if (currentIndex < text.length) {
+            setDisplayedText(text.substring(0, currentIndex + 1));
+            currentIndex++;
+          } else {
+            // Typing complete
+            clearInterval(typeInterval);
+            setTypingComplete(true);
 
-          // Cursor blinks 3 more times after typing
-          let blinks = 0;
-          const blinkInterval = setInterval(() => {
-            blinks++;
-            setShowCursor((prev) => !prev);
+            // Cursor blinks 3 more times after typing
+            let blinks = 0;
+            const blinkInterval = setInterval(() => {
+              blinks++;
+              setShowCursor((prev) => !prev);
 
-            if (blinks >= 6) {
-              // 3 full blinks = 6 toggles
-              clearInterval(blinkInterval);
-              setShowCursor(false);
-            }
-          }, 350); // 0.35s per blink toggle (0.7s per full blink)
-        }
-      }, 60); // 60ms per character
+              if (blinks >= 6) {
+                // 3 full blinks = 6 toggles
+                clearInterval(blinkInterval);
+                setShowCursor(false);
 
-      return () => clearInterval(typeInterval);
+                // Wait 1 second then restart the animation
+                const restartDelay = setTimeout(() => {
+                  setDisplayedText("");
+                  setTypingComplete(false);
+                  setShowCursor(true);
+                  startTyping();
+                }, 1000);
+
+                return () => clearTimeout(restartDelay);
+              }
+            }, 350); // 0.35s per blink toggle (0.7s per full blink)
+          }
+        }, 60); // 60ms per character
+
+        return () => clearInterval(typeInterval);
+      };
+
+      startTyping();
     }, 500); // 0.5s delay before starting
 
     return () => clearTimeout(startDelay);
