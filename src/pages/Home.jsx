@@ -43,16 +43,27 @@ const heroStyles = `
     from { opacity: 0; transform: translateY(18px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  .hero-line   { opacity: 0; animation: heroFadeUp 0.7s ease forwards; }
-  .hero-line-1 { animation-delay: 0.20s; }
-  .hero-line-2 { animation-delay: 0.38s; }
-  .hero-line-3 { animation-delay: 0.56s; }
-  .hero-input  { opacity: 0; animation: heroFadeUp 0.6s ease 0.74s forwards; }
-  .hero-hint   { opacity: 0; animation: heroFadeUp 0.6s ease 0.92s forwards; }
+  @keyframes wordReveal {
+    0%   { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes goldPulse {
+    0%, 100% { text-shadow: 0 0 0px transparent; }
+    50%       { text-shadow: 0 0 20px rgba(212, 168, 67, 0.4); }
+  }
+  .hero-word {
+    display: inline-block;
+    opacity: 0;
+    animation: wordReveal 0.5s ease-out forwards;
+  }
+  .hero-word-africa {
+    animation: wordReveal 0.5s ease-out 1.10s forwards, goldPulse 2s 1.5s infinite;
+  }
+  .hero-input { opacity: 0; animation: heroFadeUp 0.6s ease 0.74s forwards; }
+  .hero-hint  { opacity: 0; animation: heroFadeUp 0.6s ease 0.92s forwards; }
 
-  /* Mobile: anchor background to top on very small screens */
   @media (max-width: 767px) {
-    .hero-section { background-position: center top !important; }
+    .hero-section { background-position: center center !important; }
     .hero-overlay {
       background: linear-gradient(
         to bottom,
@@ -63,7 +74,6 @@ const heroStyles = `
       ) !important;
     }
   }
-  /* Very small screens — mobile hero only (desktop hero is hidden below 768px) */
   @media (max-width: 374px) {
     .hero-h1         { font-size: 26px !important; }
     .hero-input-wrap { width: 95% !important; }
@@ -85,9 +95,12 @@ export default function Home() {
         className="hero-section md:hidden relative flex flex-col justify-end text-center"
         style={{
           minHeight: '100vh',
+          height: '100vh',
+          maxHeight: '100vh',
+          overflow: 'hidden',
           backgroundImage: 'url(/hero-bg.png)',
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'center center',
           backgroundRepeat: 'no-repeat',
         }}
       >
@@ -102,15 +115,25 @@ export default function Home() {
         {/* Bottom content */}
         <div
           className="relative z-10 w-full max-w-3xl mx-auto px-6 flex flex-col items-center"
-          style={{ paddingBottom: '60px' }}
+          style={{ paddingBottom: '25vh' }}
         >
           <h1
             className="hero-h1 font-heading font-bold leading-tight mb-8"
             style={{ fontSize: 'clamp(1.875rem, 7vw, 2.75rem)' }}
           >
-            <span className="block text-white hero-line hero-line-1">Smart Systems.</span>
-            <span className="block text-white hero-line hero-line-2">Real Results.</span>
-            <span className="block hero-line hero-line-3" style={{ color: '#D4A843' }}>Built for Africa.</span>
+            <span className="block text-white">
+              <span className="hero-word" style={{ animationDelay: '0.20s' }}>Smart </span>
+              <span className="hero-word" style={{ animationDelay: '0.35s' }}>Systems.</span>
+            </span>
+            <span className="block text-white">
+              <span className="hero-word" style={{ animationDelay: '0.50s' }}>Real </span>
+              <span className="hero-word" style={{ animationDelay: '0.65s' }}>Results.</span>
+            </span>
+            <span className="block">
+              <span className="hero-word" style={{ animationDelay: '0.80s' }}>Built </span>
+              <span className="hero-word" style={{ animationDelay: '0.95s' }}>for </span>
+              <span className="hero-word hero-word-africa" style={{ color: '#D4A843' }}>Africa.</span>
+            </span>
           </h1>
 
           <div className="hero-input hero-input-wrap w-full max-w-xl">
@@ -187,9 +210,19 @@ export default function Home() {
             className="font-heading font-bold leading-tight relative z-10"
             style={{ fontSize: '52px', lineHeight: 1.08, marginBottom: '2rem' }}
           >
-            <span className="block text-white hero-line hero-line-1">Smart Systems.</span>
-            <span className="block text-white hero-line hero-line-2">Real Results.</span>
-            <span className="block hero-line hero-line-3" style={{ color: '#D4A843' }}>Built for Africa.</span>
+            <span className="block text-white">
+              <span className="hero-word" style={{ animationDelay: '0.20s' }}>Smart </span>
+              <span className="hero-word" style={{ animationDelay: '0.35s' }}>Systems.</span>
+            </span>
+            <span className="block text-white">
+              <span className="hero-word" style={{ animationDelay: '0.50s' }}>Real </span>
+              <span className="hero-word" style={{ animationDelay: '0.65s' }}>Results.</span>
+            </span>
+            <span className="block">
+              <span className="hero-word" style={{ animationDelay: '0.80s' }}>Built </span>
+              <span className="hero-word" style={{ animationDelay: '0.95s' }}>for </span>
+              <span className="hero-word hero-word-africa" style={{ color: '#D4A843' }}>Africa.</span>
+            </span>
           </h1>
 
           {/* Input bar */}
