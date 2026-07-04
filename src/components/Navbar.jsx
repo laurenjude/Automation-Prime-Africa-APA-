@@ -74,10 +74,10 @@ export default function Navbar() {
 
       {/* Mobile overlay menu */}
       <div
-        className={`md:hidden fixed inset-0 z-40 transition-all duration-300 ${
+        className={`md:hidden fixed inset-0 z-50 transition-all duration-300 ${
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
-        style={{ background: 'rgba(13,17,23,0.98)', top: '68px' }}
+        style={{ backgroundColor: '#0D1117', top: '68px' }}
       >
         <div className="flex flex-col items-center justify-center h-full gap-8 pb-20">
           {navLinks.map((link) => (
