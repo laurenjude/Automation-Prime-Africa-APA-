@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Phone, Sun, Building2, Scale } from "lucide-react";
 import ValuePropBar from "../components/ValuePropBar";
@@ -79,6 +80,17 @@ const heroStyles = `
 
 export default function Home() {
   const navigate = useNavigate();
+  const heroImageRef = useRef(null);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = '/hero-bg.png';
+    img.onload = () => {
+      if (heroImageRef.current) {
+        heroImageRef.current.style.opacity = '1';
+      }
+    };
+  }, []);
 
   return (
     <>
@@ -95,11 +107,23 @@ export default function Home() {
           height: "100vh",
           maxHeight: "100vh",
           overflow: "hidden",
-          backgroundImage: "url(/hero-bg.png)",
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
-          backgroundRepeat: "no-repeat",
+          background: "radial-gradient(ellipse at 50% 40%, rgba(212, 168, 67, 0.15) 0%, rgba(212, 168, 67, 0.05) 30%, transparent 60%), #0D1117",
         }}>
+        {/* Async image layer — opacity 0 → 1 when image loads */}
+        <div
+          ref={heroImageRef}
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: "url(/hero-bg.png)",
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
+            backgroundRepeat: "no-repeat",
+            opacity: 0,
+            transition: "opacity 0.5s ease",
+          }}
+        />
+
         {/* Gradient overlay */}
         <div
           className="hero-overlay absolute inset-0 pointer-events-none"
