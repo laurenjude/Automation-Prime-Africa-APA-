@@ -36,7 +36,7 @@ export default function Navbar() {
         borderBottom: isScrolled ? '1px solid rgba(212,168,67,0.1)' : '1px solid transparent',
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="relative z-[60] max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo — 44px mobile, 56px desktop */}
         <Link to="/" className="flex items-center" aria-label="Automation Prime Africa — home">
           <img
@@ -77,7 +77,7 @@ export default function Navbar() {
         className={`md:hidden fixed inset-0 z-50 transition-all duration-300 ${
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
-        style={{ backgroundColor: '#0D1117', top: '68px' }}
+        style={{ backgroundColor: '#0D1117', top: 0, left: 0, width: '100vw', height: '100vh' }}
       >
         <div className="flex flex-col items-center justify-center h-full gap-8 pb-20">
           {navLinks.map((link) => (
