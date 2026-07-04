@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Phone, Sun, Building2, Scale } from "lucide-react";
 import ValuePropBar from "../components/ValuePropBar";
 import HowWeWork from "../components/HowWeWork";
@@ -84,10 +84,10 @@ export default function Home() {
 
   useEffect(() => {
     const img = new Image();
-    img.src = '/hero-bg.png';
+    img.src = "/hero-bg.png";
     img.onload = () => {
       if (heroImageRef.current) {
-        heroImageRef.current.style.opacity = '1';
+        heroImageRef.current.style.opacity = "1";
       }
     };
   }, []);
@@ -107,7 +107,8 @@ export default function Home() {
           height: "100vh",
           maxHeight: "100vh",
           overflow: "hidden",
-          background: "radial-gradient(ellipse at 50% 40%, rgba(212, 168, 67, 0.15) 0%, rgba(212, 168, 67, 0.05) 30%, transparent 60%), #0D1117",
+          background:
+            "radial-gradient(ellipse at 50% 40%, rgba(212, 168, 67, 0.15) 0%, rgba(212, 168, 67, 0.05) 30%, transparent 60%), #0D1117",
         }}>
         {/* Async image layer — opacity 0 → 1 when image loads */}
         <div
@@ -180,12 +181,14 @@ export default function Home() {
             className="hero-hint text-sm mt-5"
             style={{ color: "#A0A0A0" }}>
             Not sure where to start?{" "}
-            <Link
-              to="/contact"
+            <a
+              href="https://calendly.com/automationprimeafrica"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-semibold transition-opacity hover:opacity-80"
               style={{ color: "#D4A843" }}>
               Let's build together.
-            </Link>
+            </a>
           </p>
         </div>
       </section>
@@ -281,12 +284,14 @@ export default function Home() {
             className="hero-hint text-sm relative z-10"
             style={{ color: "#A0A0A0" }}>
             Not sure where to start?{" "}
-            <Link
-              to="/contact"
+            <a
+              href="https://calendly.com/automationprimeafrica"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-semibold transition-opacity hover:opacity-80"
               style={{ color: "#D4A843" }}>
               Let's build together.
-            </Link>
+            </a>
           </p>
         </div>
 
