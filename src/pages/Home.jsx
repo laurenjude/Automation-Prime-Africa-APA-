@@ -76,6 +76,11 @@ const heroStyles = `
     .hero-h1         { font-size: 26px !important; }
     .hero-input-wrap { width: 95% !important; }
   }
+  @keyframes showcaseGlow {
+    0%, 100% { box-shadow: 0 0 0px transparent; }
+    50%       { box-shadow: 0 0 24px rgba(212, 168, 67, 0.45); }
+  }
+  .showcase-glow { animation: showcaseGlow 2s ease-in-out infinite; }
 `;
 
 export default function Home() {
@@ -375,6 +380,80 @@ export default function Home() {
 
       {/* Stats */}
       <StatsSection />
+
+      {/* Showcase */}
+      <section className="py-20 md:py-28" style={{ background: '#1C2333' }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <ScrollFadeIn>
+            <div className="text-center mb-12">
+              <h2 className="font-heading font-black text-3xl md:text-4xl text-white mb-3">
+                IN <span className="text-gradient-gold">ACTION</span>
+              </h2>
+              <div className="gold-line" />
+              <p className="text-white-muted mt-5 text-base max-w-xl mx-auto">
+                See what our systems look like in production
+              </p>
+            </div>
+          </ScrollFadeIn>
+
+          <ScrollFadeIn delay={150}>
+            <div className="max-w-3xl mx-auto">
+              <div
+                className="rounded-xl p-8"
+                style={{
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(212,168,67,0.2)',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
+                }}
+              >
+                <p className="text-xs font-bold tracking-widest uppercase mb-5" style={{ color: '#D4A843' }}>
+                  AI Voice Concierge — Live Demo
+                </p>
+
+                <h3 className="font-heading font-bold text-white mb-1" style={{ fontSize: '28px' }}>
+                  Ember &amp; Bun
+                </h3>
+                <p className="font-semibold mb-5" style={{ color: '#D4A843', fontSize: '14px' }}>
+                  Crafted Burgers. Real Flavor.
+                </p>
+
+                <p className="text-white-muted mb-8" style={{ fontSize: '14px', lineHeight: 1.7 }}>
+                  Ember &amp; Bun uses our AI Voice Concierge to handle phone orders and reservations 24/7.
+                  Customers call, the AI takes their order, confirms details, and sends a confirmation.
+                  No missed calls, no hold times, no additional staff needed. This is what automation
+                  looks like when it is done right.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                  <a
+                    href="https://ember-and-bun-gules.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-gold-outline text-sm text-center"
+                    style={{ padding: '12px 24px' }}
+                  >
+                    Visit Ember &amp; Bun
+                  </a>
+                  <a
+                    href="https://vapi.ai?demo=true&shareKey=a68ed201-6a32-4dd7-b462-12784a326f06&assistantId=40dcc6b5-7718-40ef-bca6-fedb514dd0b0"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-gold showcase-glow text-sm text-center"
+                    style={{ padding: '12px 24px' }}
+                  >
+                    Try The AI Agent
+                  </a>
+                </div>
+
+                <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.3)' }}>
+                  Powered by Automation Prime Africa
+                </p>
+              </div>
+            </div>
+          </ScrollFadeIn>
+        </div>
+      </section>
 
       {/* CTA */}
       <CTASection />
