@@ -382,7 +382,9 @@ export default function Home() {
       <StatsSection />
 
       {/* Showcase */}
-      <section className="py-20 md:py-28" style={{ background: '#1C2333' }}>
+      <section
+        className="py-20 md:py-28"
+        style={{ background: "#1C2333" }}>
         <div className="max-w-7xl mx-auto px-6">
           <ScrollFadeIn>
             <div className="text-center mb-12">
@@ -401,28 +403,36 @@ export default function Home() {
               <div
                 className="rounded-xl p-8"
                 style={{
-                  background: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(212,168,67,0.2)',
-                  backdropFilter: 'blur(10px)',
-                  WebkitBackdropFilter: 'blur(10px)',
-                }}
-              >
-                <p className="text-xs font-bold tracking-widest uppercase mb-5" style={{ color: '#D4A843' }}>
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(212,168,67,0.2)",
+                  backdropFilter: "blur(10px)",
+                  WebkitBackdropFilter: "blur(10px)",
+                }}>
+                <p
+                  className="text-xs font-bold tracking-widest uppercase mb-5"
+                  style={{ color: "#D4A843" }}>
                   AI Voice Concierge — Live Demo
                 </p>
 
-                <h3 className="font-heading font-bold text-white mb-1" style={{ fontSize: '28px' }}>
+                <h3
+                  className="font-heading font-bold text-white mb-1"
+                  style={{ fontSize: "28px" }}>
                   Ember &amp; Bun
                 </h3>
-                <p className="font-semibold mb-5" style={{ color: '#D4A843', fontSize: '14px' }}>
+                <p
+                  className="font-semibold mb-5"
+                  style={{ color: "#D4A843", fontSize: "14px" }}>
                   Crafted Burgers. Real Flavor.
                 </p>
 
-                <p className="text-white-muted mb-8" style={{ fontSize: '14px', lineHeight: 1.7 }}>
-                  Ember &amp; Bun uses our AI Voice Concierge to handle phone orders and reservations 24/7.
-                  Customers call, the AI takes their order, confirms details, and sends a confirmation.
-                  No missed calls, no hold times, no additional staff needed. This is what automation
-                  looks like when it is done right.
+                <p
+                  className="text-white-muted mb-8"
+                  style={{ fontSize: "14px", lineHeight: 1.7 }}>
+                  Ember &amp; Bun uses our AI Voice Concierge to handle phone
+                  orders and reservations 24/7. Customers call, the AI takes
+                  their order, confirms details, and sends a confirmation. No
+                  missed calls, no hold times, no additional staff needed. This
+                  is what automation looks like when it is done right.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 mb-6">
@@ -431,22 +441,20 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-gold-outline text-sm text-center"
-                    style={{ padding: '12px 24px' }}
-                  >
+                    style={{ padding: "12px 24px" }}>
                     Visit Ember &amp; Bun
                   </a>
                   <a
-                    href="https://vapi.ai?demo=true&shareKey=a68ed201-6a32-4dd7-b462-12784a326f06&assistantId=40dcc6b5-7718-40ef-bca6-fedb514dd0b0"
+                    href="https://ember-and-bun-gules.vercel.app/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-gold showcase-glow text-sm text-center"
-                    style={{ padding: '12px 24px' }}
-                  >
+                    style={{ padding: "12px 24px" }}>
                     Try The AI Agent
                   </a>
                 </div>
 
-                <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.3)' }}>
+                <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
                   Powered by Automation Prime Africa
                 </p>
               </div>
