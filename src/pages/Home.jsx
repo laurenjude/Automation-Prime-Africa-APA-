@@ -393,7 +393,7 @@ export default function Home() {
               </h2>
               <div className="gold-line" />
               <p className="text-white-muted mt-5 text-base max-w-xl mx-auto">
-                See what our systems look like in production
+                See what our systems look like in production — two live platforms and counting
               </p>
             </div>
           </ScrollFadeIn>
@@ -451,6 +451,65 @@ export default function Home() {
                     className="btn-gold showcase-glow text-sm text-center"
                     style={{ padding: "12px 24px" }}>
                     Try The AI Agent
+                  </a>
+                </div>
+
+                <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
+                  Powered by Automation Prime Africa
+                </p>
+              </div>
+            </div>
+          </ScrollFadeIn>
+
+          <ScrollFadeIn delay={300}>
+            <div className="max-w-3xl mx-auto mt-6">
+              <div
+                className="rounded-xl p-8"
+                style={{
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(212,168,67,0.2)",
+                  backdropFilter: "blur(10px)",
+                  WebkitBackdropFilter: "blur(10px)",
+                }}
+              >
+                <p className="text-xs font-bold tracking-widest uppercase mb-5" style={{ color: "#D4A843" }}>
+                  Clinic Management System — Live Platform
+                </p>
+
+                <h3 className="font-heading font-bold text-white mb-1" style={{ fontSize: "28px" }}>
+                  OrthoClinic Pro
+                </h3>
+                <p className="font-semibold mb-5" style={{ color: "#D4A843", fontSize: "14px" }}>
+                  Your Smile, Our Priority
+                </p>
+
+                <p className="text-white-muted mb-8" style={{ fontSize: "14px", lineHeight: 1.7 }}>
+                  OrthoClinic Pro is a complete clinic management platform handling patient registration,
+                  appointment scheduling, payment tracking, automated reminders, and end-of-treatment flows.
+                  Clinic staff log into a branded dashboard to manage their entire operation. Patients book
+                  consultations through a public booking page. Five automated workflows run behind the scenes
+                  handling reminders, payment processing, deadline tracking, and treatment completion
+                  notifications. Zero manual spreadsheets. Zero missed appointments. Zero forgotten follow-ups.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                  <a
+                    href="https://the-clinic-black.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-gold-outline text-sm text-center"
+                    style={{ padding: "12px 24px" }}
+                  >
+                    View OrthoClinic Pro
+                  </a>
+                  <a
+                    href="https://the-clinic-black.vercel.app/book"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-gold text-sm text-center"
+                    style={{ padding: "12px 24px" }}
+                  >
+                    Try Patient Booking
                   </a>
                 </div>
 
