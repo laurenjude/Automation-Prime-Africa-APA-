@@ -41,7 +41,13 @@ export default function Navbar() {
         {/* Logo — 44px mobile, 56px desktop */}
         <Link
           to="/"
-          className="flex items-center"
+          onClick={(e) => {
+            if (location.pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
+          className="flex items-center cursor-pointer"
           aria-label="Automation Prime Africa — home">
           <img
             src="/logo.png"

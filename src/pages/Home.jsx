@@ -393,7 +393,7 @@ export default function Home() {
               </h2>
               <div className="gold-line" />
               <p className="text-white-muted mt-5 text-base max-w-xl mx-auto">
-                See what our systems look like in production — two live platforms and counting
+                See what our systems look like in production — four platforms across healthcare, hospitality, interpreting, and education
               </p>
             </div>
           </ScrollFadeIn>
@@ -515,6 +515,115 @@ export default function Home() {
 
                 <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
                   Powered by Automation Prime Africa
+                </p>
+              </div>
+            </div>
+          </ScrollFadeIn>
+
+          <ScrollFadeIn delay={450}>
+            <div className="max-w-3xl mx-auto mt-6">
+              <div
+                className="rounded-xl p-8"
+                style={{
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(212,168,67,0.2)",
+                  backdropFilter: "blur(10px)",
+                  WebkitBackdropFilter: "blur(10px)",
+                }}
+              >
+                <p className="text-xs font-bold tracking-widest uppercase mb-5" style={{ color: "#D4A843" }}>
+                  Interpreting Platform — Live Client Project
+                </p>
+
+                <h3 className="font-heading font-bold text-white mb-1" style={{ fontSize: "28px" }}>
+                  Horizon Interpreters
+                </h3>
+                <p className="font-semibold mb-5" style={{ color: "#D4A843", fontSize: "14px" }}>
+                  Bridging Language Gaps, Connecting People
+                </p>
+
+                <p className="text-white-muted mb-8" style={{ fontSize: "14px", lineHeight: 1.7 }}>
+                  A complete digital platform built for a UK-based interpreting service covering 47 languages.
+                  The system includes a custom website with animated hero and online booking, an Airtable
+                  database managing interpreters, bookings, and clients, three automated n8n workflows handling
+                  booking confirmations, appointment reminders, and job completion with branded invoicing,
+                  Telegram notifications for interpreter coordination, and Cloudflare email routing for
+                  professional business email. Built and delivered as a paid client project from initial
+                  proposal through to live deployment.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                  <a
+                    href="https://horizoninterpreters.uk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-gold-outline text-sm text-center"
+                    style={{ padding: "12px 24px" }}
+                  >
+                    View Website
+                  </a>
+                  <a
+                    href="https://horizoninterpreters.uk/#contact"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-gold text-sm text-center"
+                    style={{ padding: "12px 24px" }}
+                  >
+                    Book an Interpreter
+                  </a>
+                </div>
+
+                <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
+                  Live Client Project — Automation Prime Africa
+                </p>
+              </div>
+            </div>
+          </ScrollFadeIn>
+
+          <ScrollFadeIn delay={600}>
+            <div className="max-w-3xl mx-auto mt-6">
+              <div
+                className="rounded-xl p-8"
+                style={{
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(212,168,67,0.2)",
+                  backdropFilter: "blur(10px)",
+                  WebkitBackdropFilter: "blur(10px)",
+                }}
+              >
+                <p className="text-xs font-bold tracking-widest uppercase mb-5" style={{ color: "#D4A843" }}>
+                  School Finance Platform — In Development
+                </p>
+
+                <h3 className="font-heading font-bold text-white mb-1" style={{ fontSize: "28px" }}>
+                  LedgerEd
+                </h3>
+                <p className="font-semibold mb-5" style={{ color: "#D4A843", fontSize: "14px" }}>
+                  Financial Transparency for Schools
+                </p>
+
+                <p className="text-white-muted mb-8" style={{ fontSize: "14px", lineHeight: 1.7 }}>
+                  A school financial transparency platform giving proprietors real-time visibility into fee
+                  collection, payroll, and expenses from their phone. Built with Supabase and React, the system
+                  features role-based access for proprietors, bursary officers, principals, and administrators.
+                  It handles student fee tracking with digital receipt generation, teacher payroll management
+                  with a two-person approval workflow, comprehensive reporting with print and CSV export, and a
+                  full audit trail for every financial transaction. Currently being validated against a
+                  2,000-student school in Cameroon.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                  <span
+                    aria-disabled="true"
+                    className="btn-gold-outline text-sm text-center"
+                    style={{ padding: "12px 24px", opacity: 0.6, cursor: "not-allowed" }}
+                  >
+                    Coming Soon
+                  </span>
+                </div>
+
+                <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
+                  Pilot Programme — Automation Prime Africa
                 </p>
               </div>
             </div>
