@@ -393,7 +393,7 @@ export default function Home() {
               </h2>
               <div className="gold-line" />
               <p className="text-white-muted mt-5 text-base max-w-xl mx-auto">
-                See what our systems look like in production — four platforms across healthcare, hospitality, interpreting, and education
+                See what our systems look like in production — five platforms across healthcare, hospitality, interpreting, education, and cybersecurity
               </p>
             </div>
           </ScrollFadeIn>
@@ -518,6 +518,55 @@ export default function Home() {
                   border: "1px solid rgba(212,168,67,0.2)",
                   backdropFilter: "blur(10px)",
                   WebkitBackdropFilter: "blur(10px)",
+                }}
+              >
+                <p className="text-xs font-bold tracking-widest uppercase mb-5" style={{ color: "#D4A843" }}>
+                  Cybersecurity Training Platform — Live Assessment Lab
+                </p>
+
+                <h3 className="font-heading font-bold text-white mb-1" style={{ fontSize: "28px" }}>
+                  APA Security Lab
+                </h3>
+                <p className="font-semibold mb-5" style={{ color: "#D4A843", fontSize: "14px" }}>
+                  Sharpen Your Defenses, Stay Ahead of Threats
+                </p>
+
+                <p className="text-white-muted mb-8" style={{ fontSize: "14px", lineHeight: 1.7 }}>
+                  A secure training and assessment platform for cybersecurity teams to practice real-world
+                  attack and defense scenarios in a controlled environment. The system features role-based
+                  login, guided security challenges, and progress tracking so teams can benchmark their skills
+                  and close gaps before an actual breach does. Our first step into cybersecurity, built with
+                  the same automation-first approach we bring to every client platform.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                  <a
+                    href="https://apa-security-lab.vercel.app/login"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-gold-outline text-sm text-center"
+                    style={{ padding: "12px 24px" }}
+                  >
+                    View Security Lab
+                  </a>
+                </div>
+
+                <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
+                  Automation Prime Africa
+                </p>
+              </div>
+            </div>
+          </ScrollFadeIn>
+
+          <ScrollFadeIn delay={600}>
+            <div className="max-w-3xl mx-auto mt-6">
+              <div
+                className="rounded-xl p-8"
+                style={{
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(212,168,67,0.2)",
+                  backdropFilter: "blur(10px)",
+                  WebkitBackdropFilter: "blur(10px)",
                 }}>
                 <p
                   className="text-xs font-bold tracking-widest uppercase mb-5"
@@ -572,7 +621,7 @@ export default function Home() {
             </div>
           </ScrollFadeIn>
 
-          <ScrollFadeIn delay={600}>
+          <ScrollFadeIn delay={750}>
             <div className="max-w-3xl mx-auto mt-6">
               <div
                 className="rounded-xl p-8"
