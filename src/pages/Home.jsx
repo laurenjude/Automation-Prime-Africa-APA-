@@ -491,13 +491,15 @@ export default function Home() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                  <span
-                    aria-disabled="true"
+                  <a
+                    href="https://ledgered.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="btn-gold-outline text-sm text-center"
-                    style={{ padding: "12px 24px", opacity: 0.6, cursor: "not-allowed" }}
+                    style={{ padding: "12px 24px" }}
                   >
-                    Coming Soon
-                  </span>
+                    View LedgerEd
+                  </a>
                 </div>
 
                 <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
